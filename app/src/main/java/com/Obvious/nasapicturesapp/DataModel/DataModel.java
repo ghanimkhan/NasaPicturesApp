@@ -2,8 +2,7 @@ package com.Obvious.nasapicturesapp.DataModel;
 
 public class DataModel {
 
-
-        private String date, explanation, hdurl, media_type, service_version, title, url;
+        private String service_version,date, explanation, hdurl, media_type, title, url;
 
         public String getDate() {
             return date;

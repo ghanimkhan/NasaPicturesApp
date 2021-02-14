@@ -18,24 +18,28 @@ import java.util.List;
 
 public class GridAdapter extends RecyclerView.Adapter<GridAdapter.GridViewHolder> {
 
-
-
     private List<DataModel> dataSet;
     Context mContext;
+    public class GridViewHolder extends RecyclerView.ViewHolder {
+        ImageView image;
+        public GridViewHolder(@NonNull View itemView) {
+            super(itemView);
+            image = (ImageView) itemView.findViewById(R.id.image);
+        }
+    }
 
     public GridAdapter(Context context, List<DataModel> data){
         this.dataSet = data;
         this.mContext = context;
     }
 
-
-
     @NonNull
     @Override
-    public GridViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater= LayoutInflater.from(parent.getContext());
-        View view=inflater.inflate(R.layout.adapter_list,parent,false);
-        return new GridViewHolder(view);
+    public GridAdapter.GridViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.adapter_list,parent, false);
+        GridViewHolder vh = new GridViewHolder(v);
+        return vh;
     }
 
     @Override
@@ -59,12 +63,5 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.GridViewHolder
         return dataSet.size();
     }
 
-    public class GridViewHolder extends RecyclerView.ViewHolder {
-        ImageView image;
-        public GridViewHolder(@NonNull View itemView) {
-            super(itemView);
-            image = (ImageView) itemView.findViewById(R.id.image);
 
-        }
-    }
 }
