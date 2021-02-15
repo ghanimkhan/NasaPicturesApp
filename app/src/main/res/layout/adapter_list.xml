@@ -2,7 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:padding="4dp"
+    android:padding="5dp"
     android:layout_height="wrap_content">
 
     <RelativeLayout
@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:background="@color/black">
+        android:background="#1B1B1B">
 
         <ImageView
             android:id="@+id/image"
