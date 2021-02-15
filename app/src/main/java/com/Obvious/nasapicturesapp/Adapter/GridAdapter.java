@@ -30,6 +30,12 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.GridViewHolder
 
     public Activity mContext;
 
+    private OnImageClickListener listener;
+
+    public interface OnImageClickListener{
+        void onImageClick(int pos);
+    }
+
     protected void slideInTransition(Context context) {
         mContext.overridePendingTransition(R.anim.slide_in_right, R.anim.fade_back);
     }
@@ -52,6 +58,10 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.GridViewHolder
         this.mContext = (Activity) context;
     }
 
+    public void setOnImageClickListener(OnImageClickListener listener){
+        this.listener = listener;
+    }
+
     @NonNull
     @Override
     public GridAdapter.GridViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -72,11 +82,13 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.GridViewHolder
         holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(mContext, SheetActivity.class);
-                i.putExtra("position", position);
-                mContext.startActivity(i);
-                mContext.overridePendingTransition(R.anim.slide_in_right, R.anim.fade_back);
-
+                if(listener!=null){
+                    listener.onImageClick(position);
+                }
+//                Intent i = new Intent(mContext, SheetActivity.class);
+//                i.putExtra("position", position);
+//                mContext.startActivity(i);
+//                mContext.overridePendingTransition(R.anim.slide_in_right, R.anim.fade_back);
             }
         });
     }

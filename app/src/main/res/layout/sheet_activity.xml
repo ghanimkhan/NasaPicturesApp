@@ -7,8 +7,6 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="20dp"
-
         android:layout_height="250dp"
         android:id="@+id/ImageLayout">
         <FrameLayout
@@ -48,9 +46,9 @@
         android:layout_height="match_parent"
         android:id="@+id/textlayout"
         android:layout_below="@+id/ImageLayout"
-        android:layout_margin="5dp">
+        >
 
-        <ScrollView
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbars="none">
@@ -58,20 +56,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-
                 <TextView
                     android:id="@+id/description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:paddingTop="16dp"
                     android:textColor="#FFFFFF"
+                    android:paddingBottom="20dp"
                     android:fontFamily="sans-serif"
-                    android:gravity="center"
-                    android:textSize="20dp" />
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:textSize="16sp" />
 
             </RelativeLayout>
 
-        </ScrollView>
+        </androidx.core.widget.NestedScrollView>
 
     </RelativeLayout>
 
