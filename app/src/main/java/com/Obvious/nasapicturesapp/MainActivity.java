@@ -8,18 +8,24 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.animation.Animator;
 import android.content.Context;
 import android.os.Bundle;
+import android.transition.Fade;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.Obvious.nasapicturesapp.Adapter.GridAdapter;
 import com.Obvious.nasapicturesapp.DataModel.DataModel;
+import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -38,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     public static List<DataModel> nasaModelArrayList = new ArrayList<>();
     GridAdapter Adapter;
+    LottieAnimationView lottieanimationview;
+
 
     private class ImagePagerAdapter extends PagerAdapter {
         @Override
@@ -102,6 +110,9 @@ public class MainActivity extends AppCompatActivity {
         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
         View bottomSheetView = LayoutInflater.from(this).inflate(R.layout.bottom_sheet_details,(ConstraintLayout) this.findViewById(R.id.bottom_sheet_container));
         bottomSheetDialog.setContentView(bottomSheetView);
+        lottieanimationview = findViewById(R.id.lottieanimationview);
+        playAnimation();
+
 
         Adapter.setOnImageClickListener(new GridAdapter.OnImageClickListener() {
             @Override
@@ -114,6 +125,35 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void playAnimation() {
+        lottieanimationview.addAnimatorListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+                Log.e("Animation:","start");
+
+                lottieanimationview.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                Log.e("Animation:","end");
+
+                lottieanimationview.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+                Log.e("Animation:","cancel");
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+                Log.e("Animation:","repeat");
+            }
+        });
+    }
+
     public String loadJSONFromAsset() {
         String json = null;
         try {

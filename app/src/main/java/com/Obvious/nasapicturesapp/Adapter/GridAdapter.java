@@ -36,13 +36,7 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.GridViewHolder
         void onImageClick(int pos);
     }
 
-    protected void slideInTransition(Context context) {
-        mContext.overridePendingTransition(R.anim.slide_in_right, R.anim.fade_back);
-    }
 
-    protected void slideOutTransition() {
-        mContext.overridePendingTransition(R.anim.fade_forward, R.anim.slide_out_right);
-    }
 
     private List<DataModel> dataSet;
     public class GridViewHolder extends RecyclerView.ViewHolder {

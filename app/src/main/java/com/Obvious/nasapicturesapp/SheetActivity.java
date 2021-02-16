@@ -32,31 +32,15 @@ public class SheetActivity extends Activity {
 
         // Selected id
         int position = i.getExtras().getInt("position");
+
+
+
         ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
         ImagePagerAdapter adapter = new ImagePagerAdapter();
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(position);
 
-        ImageView Cross=(ImageView) findViewById(R.id.Cross);
-        Cross.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-                overridePendingTransition(R.anim.fade_forward, R.anim.slide_out_right);
 
-            }
-        });
-    }
-
-    protected void slideOutTransition() {
-        overridePendingTransition(R.anim.fade_forward, R.anim.slide_out_right);
-    }
-
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        slideOutTransition();
     }
 
     private class ImagePagerAdapter extends PagerAdapter {

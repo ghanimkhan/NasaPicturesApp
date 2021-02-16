@@ -3,6 +3,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/parentLayout">
 
     <RelativeLayout
@@ -19,6 +20,18 @@
                 android:id="@+id/nasaImage"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"/>
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="110dp"
+                android:layout_gravity="right"
+                android:layout_height="match_parent"
+                app:lottie_loop="true"
+                app:lottie_autoPlay="true"
+                app:lottie_colorFilter="@color/white"
+                app:lottie_fileName="right.json"
+                />
+
+
             <TextView
                 android:id="@+id/title"
                 android:layout_marginLeft="10dp"
@@ -33,10 +46,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/date"
+
                 android:layout_gravity="bottom|left"
                 android:layout_marginLeft="10dp"
                 android:textStyle="bold"
                 android:textColor="@color/white"/>
+
         </FrameLayout>
 
     </RelativeLayout>
