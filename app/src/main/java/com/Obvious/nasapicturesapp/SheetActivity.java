@@ -32,9 +32,6 @@ public class SheetActivity extends Activity {
 
         // Selected id
         int position = i.getExtras().getInt("position");
-
-
-
         ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
         ImagePagerAdapter adapter = new ImagePagerAdapter();
         viewPager.setAdapter(adapter);
@@ -81,8 +78,6 @@ public class SheetActivity extends Activity {
             title.setText(ma.nasaModelArrayList.get(position).getTitle());
 
             description.setText(ma.nasaModelArrayList.get(position).getExplanation());
-
-
 
             container.addView(view);
             return view;
