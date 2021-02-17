@@ -26,18 +26,14 @@ public class SheetActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swipe);
 
-
         // get intent data
         Intent i = getIntent();
-
         // Selected id
         int position = i.getExtras().getInt("position");
         ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
         ImagePagerAdapter adapter = new ImagePagerAdapter();
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(position);
-
-
     }
 
     private class ImagePagerAdapter extends PagerAdapter {
@@ -58,20 +54,14 @@ public class SheetActivity extends Activity {
 
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View view = layoutInflater.inflate(R.layout.sheet_activity, container, false);
-
             ImageView imageView = (ImageView) view.findViewById(R.id.nasaImage);
-
             TextView date = (TextView) view.findViewById(R.id.date);
-
             TextView title = (TextView) view.findViewById(R.id.title);
-
             TextView description = (TextView) view.findViewById(R.id.description);
 
-            //imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
             String imageURL = ma.nasaModelArrayList.get(position).getUrl();
             Glide.with(SheetActivity.this).load(imageURL).apply(new RequestOptions()
                     .placeholder(R.drawable.image)).into(imageView);
-            //((ViewPager) container).addView(imageView, 0);
 
             date.setText(ma.nasaModelArrayList.get(position).getDate());
 
@@ -82,7 +72,6 @@ public class SheetActivity extends Activity {
             container.addView(view);
             return view;
         }
-
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
             //((ViewPager) container).removeView((ImageView) object);
